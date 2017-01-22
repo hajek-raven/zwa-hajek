@@ -1,0 +1,63 @@
+{block content}
+
+<div class="container admin-category">
+    <h1>Kategorie</h1>
+    {snippet alerts}
+        <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">
+            {$flash->message}
+        </div>
+    {/snippet}
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+            <h2>Přidat novou kategorii</h2>
+            {form addCategoryForm, novalidate => true}
+                <div class="form-group">
+                    {label title /}
+                    {input title, class=>"form-control", placeholder=>"Název ..."}
+                </div>
+                <div class="form-group">
+                    {label parent_id /}
+                    {input parent_id, class=>"form-control"}
+                </div>
+                <div class="form-group">
+                    {input send, class=>"btn btn-success"}
+                </div>
+            {/form}
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="well">
+                <h2>Výpis kategorií</h2>
+                {snippet categoryListing}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Název kategorie</th>
+                                <th class="text-center">Akce</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr n:foreach="$categories as $category">
+                                <td class="text-center">{$category->id}</td>
+                                <td>{$category->title}</td>
+                                <td class="action">
+                                    <a href="{link Category:detail, $category->id}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Zobrazit</a>
+                                    <a href="{link Admin:categoryEdit, $category->id}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Upravit</a>
+                                    <a href="{link categoryDelete!, $category->id}" class="btn btn-danger btn-sm ajax"><span class="glyphicon glyphicon-remove"></span> Smazat</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center">
+                        {control visualPaginator}
+                    </div>
+                {/snippet}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

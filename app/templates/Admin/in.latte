@@ -1,0 +1,28 @@
+{block content}
+
+<div class="container">
+    <div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">
+        {$flash->message}
+    </div>
+
+    <div class="col-md-8 col-md-offset-2">
+
+        <div class="well">
+            <h2>Přihlášení</h2>
+            <hr>
+            {form signInForm, novalidate => true}
+                <div class="form-group">
+                    {label username /}
+                    {input username, class=>"form-control"}
+                </div>
+                <div class="form-group">
+                    {label password /}
+                    {input password, class=>"form-control"}
+                </div>
+                <div class="form-group">
+                    {input send, class=>"btn btn-success"}
+                </div>
+            {/form}
+        </div>
+    </div>
+</div>

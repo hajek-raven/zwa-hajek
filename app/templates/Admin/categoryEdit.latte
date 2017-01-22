@@ -1,0 +1,20 @@
+{block content}
+
+<div class="col-md-8 col-md-offset-2">
+    <div class="well">
+        <h2>Editace kategorie: <strong>{$category->title}</strong></h2>
+        {form addCategoryForm}
+            <div class="form-group">
+                {label title /}
+                {input title, class=>"form-control"}
+            </div>
+            <div class="form-group">
+                {label parent_id /}
+                {input parent_id, class=>"form-control"}
+            </div>
+            <div class="form-group">
+                {input send, class=>"btn btn-success"}
+            </div>
+        {/form}
+    </div>
+</div>

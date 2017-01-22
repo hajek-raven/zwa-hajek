@@ -1,0 +1,32 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+extensions:
+    dibi: Dibi\Bridges\Nette\DibiExtension22
+    visualPaginator: IPub\VisualPaginator\DI\VisualPaginatorExtension
+
+dibi:
+	host: %database.host%
+	database: %database.dbname%
+	username: %database.user%
+	password: %database.password%
+	lazy: TRUE
+	profiler: true
+
+session:
+	expiration: 14 days
+
+
+services:
+	authenticator: App\Model\DatabaseAuthenticator
+	router: App\RouterFactory::createRouter
+	- App\Model\CategoryModel
+	- App\Model\JokeModel
+
+	- App\Controls\IMenuControlFactory
+	- App\Controls\IJokeListingControlFactory

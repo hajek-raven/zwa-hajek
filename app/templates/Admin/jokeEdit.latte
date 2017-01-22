@@ -1,0 +1,20 @@
+{block content}
+
+<div class="col-md-8 col-md-offset-2">
+    <div class="well">
+        <h2>Editace vtipu:</h2>
+        {form addJokeForm}
+            <div class="form-group">
+                {label content /}
+                {input content, class=>"form-control"}
+            </div>
+            <div class="form-group">
+                {label category_id /}
+                {input category_id, class=>"form-control"}
+            </div>
+            <div class="form-group">
+                {input send, class=>"btn btn-success"}
+            </div>
+        {/form}
+    </div>
+</div>

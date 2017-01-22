@@ -1,0 +1,26 @@
+<div class="jokes">
+    <div class="well clearfix">
+        {if count($jokes) == 0}
+            <div class="joker-section">
+                <h3 class="text-center">V této kategorii zatím nejsou žádné vtipy</h3>
+                <img src="{$basePath}/img/joker-sad.png" alt="Sad joker">
+            </div>
+        {/if}
+        {foreach $jokes as $joke}
+            <div class="row">
+
+                <div class="col-xs-12 joke">
+                    <hr n:if="!$iterator->isFirst()">
+                    <div class="row">
+                        <blockquote>
+                            <p>{$joke->content}</p>
+                        </blockquote>
+                        <div class="col-xs-12">
+                            <p><strong><a href="{plink Joke:detail, $joke->id}">Detail vtipu &amp; komentáře</a></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+</div>

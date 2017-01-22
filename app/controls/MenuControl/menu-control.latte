@@ -1,0 +1,4 @@
+<ul class="nav navbar-nav navbar-right">
+    <li n:class="$actualId == -1 ? active"><a href="{plink Homepage:default}">Úvod</a></li>
+    <li n:foreach="$categories as $category" n:class="$category->id == $actualId ? active"><a href="{plink Category:detail, $category->id}">{$category->title}</a></li>
+</ul>
